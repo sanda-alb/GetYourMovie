@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GetYourMovie</string>
+    <string name="connection_problem">Connection problem!</string>
 </resources>
