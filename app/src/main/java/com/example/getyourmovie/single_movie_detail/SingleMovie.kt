@@ -7,6 +7,6 @@ import com.example.getyourmovie.R
 class SingleMovie2 : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_single_movie2)
+        setContentView(R.layout.activity_single_movie)
     }
 }
