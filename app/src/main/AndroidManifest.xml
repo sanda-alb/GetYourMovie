@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GetYourMovie" >
         <activity
-            android:name=".single_movie_detail.SingleMovie2"
+            android:name=".single_movie_details.SingleMovie2"
             android:exported="true" />
         <activity
             android:name=".MainActivity"
