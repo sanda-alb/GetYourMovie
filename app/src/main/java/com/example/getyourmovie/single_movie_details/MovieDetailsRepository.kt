@@ -15,7 +15,7 @@ class MovieDetailsRepository(private val apiService: TheMovieDBInterface) {
         movieDetailsNetworkDataSource = MovieDetailsNetworkDataSource(apiService, compositDesposable)
         movieDetailsNetworkDataSource.fetchMovieDetails(movieId)
 
-        return movieDetailsNetworkDataSource.downloadedMovieDetailsResponce
+        return movieDetailsNetworkDataSource.downloadedMovieDetailsResponse
     }
 
     fun getMovieDetailsNetworkState(): LiveData<NetworkState> {

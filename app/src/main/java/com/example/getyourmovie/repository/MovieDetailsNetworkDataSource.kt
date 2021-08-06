@@ -19,31 +19,29 @@ class MovieDetailsNetworkDataSource(
     val networkState: LiveData<NetworkState>
     get() = _networkState
 
-    private val _downloadedMovieDetailsResponce = MutableLiveData<MovieDetails>()
-    val downloadedMovieDetailsResponce: LiveData<MovieDetails>
-    get() = _downloadedMovieDetailsResponce
+    private val _downloadedMovieDetailsResponse = MutableLiveData<MovieDetails>()
+    val downloadedMovieDetailsResponse: LiveData<MovieDetails>
+    get() = _downloadedMovieDetailsResponse
 
     fun fetchMovieDetails(movieId: Int) {
         _networkState.postValue(LOADING)
 
-        try{
-        compositDesposable.add(
-            apiService.getMovieDetails(movieId)
-                .subscribeOn(Schedulers.io())
-                .subscribe(
-                    {
-                        _downloadedMovieDetailsResponce.postValue(it)
-                        _networkState.postValue(NetworkState.LOADED)
-                    },
-                    {
-                        _networkState.postValue(NetworkState.ERROR)
-                        Log.e("MovieDetailDataSource", it.message.toString())
-                    }
-
-                )
-        )
+        try {
+            compositDesposable.add(
+                apiService.getMovieDetails(movieId)
+                    .subscribeOn(Schedulers.io())
+                    .subscribe(
+                        {
+                            _downloadedMovieDetailsResponse.postValue(it)
+                            _networkState.postValue(NetworkState.LOADED)
+                        },
+                        {
+                            _networkState.postValue(NetworkState.ERROR)
+                            Log.e("MovieDetailDataSource", it.message.toString())
+                        }
+                    )
+            )
         }
-
         catch(e: Exception){
             Log.e("MovieDetailDataSource", e.message.toString())
         }
